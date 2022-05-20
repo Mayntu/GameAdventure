@@ -53,13 +53,12 @@ public class _MalCumenDeath : MonoBehaviour
     {
         _PatrolingEnemy script3 = Enemy.GetComponent<_PatrolingEnemy>();
         script3.enabled = false;
-        animator.Play("CumenDeathAnimation");
+        animator.Play("MalCumenDeathAnimation");
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
         script3.enabled = true;
         DropGoldCoin();
         DropSilverCoin();
-        DropEnemy();
     }
     public void SetEnemy(GameObject enemy)
     {
@@ -69,9 +68,7 @@ public class _MalCumenDeath : MonoBehaviour
     [SerializeField] private Transform transform1;
     [SerializeField] private GameObject SilverCoin;
     [SerializeField] private Transform transform2;
-    [SerializeField] private GameObject Other;
-    [SerializeField] private Transform transform3;
-    [SerializeField] private int minGold, maxGold, minSilver, maxSilver, minOther, maxOther;
+    [SerializeField] private int minGold, maxGold, minSilver, maxSilver;
     void DropGoldCoin()
     {
         if (isDead == true)
@@ -94,19 +91,6 @@ public class _MalCumenDeath : MonoBehaviour
             {
                 Vector3 position = transform.position;
                 GameObject coin = Instantiate(SilverCoin, position + off2 + new Vector3(i, 0, 0), Quaternion.identity);
-                coin.SetActive(true);
-            }
-        }
-    }
-    void DropEnemy()
-    {
-        if (isDead == true)
-        {
-            int countOfOther = Random.Range(minOther, maxOther);
-            for (int i = 0; i < countOfOther; i++)
-            {
-                Vector3 position = transform.position;
-                GameObject coin = Instantiate(Other, position + off3 + new Vector3(i, 0, 0), Quaternion.identity);
                 coin.SetActive(true);
             }
         }

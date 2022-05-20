@@ -51,6 +51,7 @@ public class _EnemyDeath : MonoBehaviour
     {
         _EnemyMovement script3 = Enemy.GetComponent<_EnemyMovement>();
         script3.enabled = false;
+        Enemy.GetComponent<CapsuleCollider2D>().enabled = false;
         animator.Play("SlizenDeathAnimation");
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);

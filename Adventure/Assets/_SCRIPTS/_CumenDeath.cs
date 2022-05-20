@@ -53,6 +53,7 @@ public class _CumenDeath : MonoBehaviour
     {
         _PatrolingEnemy script3 = Enemy.GetComponent<_PatrolingEnemy>();
         script3.enabled = false;
+        Enemy.GetComponent<CapsuleCollider2D>().enabled = false;
         animator.Play("CumenDeathAnimation");
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
